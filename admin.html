@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head><title>Admin</title>
+</head>
+<body>
+<div id="header" style="background-color:#aaccff; border:solid 2px;">
+<h1 align="center">When ever smart people works <br/>
+doors are unlocked!
+</h1></div>
+<div id="container">
+
+<div id="registration" style="border:solid 2px; float:left; width:61%;">
+<h3 style="color:blue;">Member Registration</h3>
+
+<table>
+<form action="<?php echo $_SERVER['PHP_SELF']; ?> "method="post">
+<tr><td>Name :<span style="color:red">*</span></td><td><input type="text" name="name" maxlength="50" required/><td></tr>
+<tr><td>Username :<span style="color:red">*</span></td><td><input type="text" name="uname" maxlength="20"required/></<td></tr>
+<tr><td>Password :<span style="color:red">*</span></td><td><input type="password" name="pass" maxlength="20"required/></td></tr>
+<tr><td>Confirm Password :<span style="color:red">*</span></td><td><input type="password" name="cpass" maxlength="60"required/></td></tr>
+<tr><td><input type="submit" name="sub" value="Registration"/></td></tr>
+</table>
+</form>
+</div>
+
+<div id="login"style="border:solid green 2px; float:right;width:38.3%;">
+<form action="" method="post">
+<h3 style="color:blue;">User login</h3>
+Username :<input type="text" name="un"/><br/><br/>
+Password :<input type="password" name="pw"/><br/>
+<input type="submit" value="Login" name="login"/>
+</form>
+</div>
+
+</div>
+</body>
+</html>
+<?php
+if (isset($_POST['sub']))
+{
+   $name=$_POST['name'];
+   $uname=$_POST['uname'];
+   $pass=$_POST['pass'];
+   $cpass=$_POST['cpass'];
+echo "----------";
+echo $uname;
+echo "----------";
+if($pass!=$cpass){
+echo "enter a password again....";
+}
+else{
+$server="localhost";
+$username="testuser";
+$password="testuser";
+$database="db_learnx";
+$con=new mysqli("localhost","testuser","testuser","db_learnx");
+if($con){
+echo "connection success...";
+}
+else{
+echo $con->error;
+}
+}/*
+   $sql_insert="INSERT INTO userlist (fullname,uname,password) VALUES ('$name','$uname','$pass')";
+   $result=$con->query($sql_insert);
+   if ($result)
+      echo "You have been registered successfully!";
+	else
+	   echo "Please try to register again!".$con->error;
+	 
+}
+*/
+?>
